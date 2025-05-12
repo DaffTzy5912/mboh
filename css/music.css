@@ -1,0 +1,9 @@
+.music {
+  padding: 4rem 2rem;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+audio {
+  margin-top: 2rem;
+}
