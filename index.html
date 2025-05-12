@@ -1,46 +1,299 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en" class="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio</title>
+  <title>[Nama Kamu] | Portofolio</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins :wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter :wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- CSS Utama -->
-  <link rel="stylesheet" href="css/main.css" />
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
 
-  <!-- Halaman CSS Dinamis -->
-  <link rel="stylesheet" id="page-style" href="css/beranda.css" />
-  <link rel="stylesheet" id="page-style" href="css/music.css" />
-  <link rel="stylesheet" id="page-style" href="css/project.css" />
+  <style>
+    :root {
+      --primary: #6366f1;
+      --bg-light: #f9fafb;
+      --bg-dark: #111827;
+      --card-bg-light: rgba(255, 255, 255, 0.8);
+      --card-bg-dark: rgba(31, 41, 55, 0.8);
+      --text-light: #fff;
+      --text-dark: #111827;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body.light {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    header {
+      background: linear-gradient(to right, #4f46e5, #6366f1);
+      color: white;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
+
+    #themeToggle {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      scrollbar-width: thin;
+    }
+
+    .slide {
+      min-width: 280px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 1rem;
+      color: white;
+      background: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .contact-form,
+    .music-player {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    form button {
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #1f2937;
+      color: #9ca3af;
+      margin-top: 3rem;
+    }
+
+    /* Sticky Music Player */
+    .music-sticky {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      z-index: 999;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 400px;
+    }
+  </style>
 </head>
 <body>
+
   <header>
-    <nav id="nav">
-      <a href="#" data-page="beranda">Beranda</a>
-      <a href="#" data-page="project">Project</a>
-      <a href="#" data-page="music">Music Fav</a>
+    <nav>
+      <h1>PortoFolio</h1>
+      <div class="nav-links">
+        <a onclick="showSection('home')">Beranda</a>
+        <a onclick="showSection('project')">Project</a>
+        <a onclick="showSection('music')">Music Fav</a>
+        <a onclick="showSection('contact')">Kontak</a>
+        <button id="themeToggle">🌙</button>
+      </div>
     </nav>
   </header>
 
-  <main id="content">
-    <section class="intro">
-      <div class="intro-content">
-        <h1>My Portfolio</h1>
-        <p>Selamat datang di dunia saya, tempat semua project terbaik saya lahir.</p>
-        <button id="go-beranda">Tekan Saya</button>
+  <main>
+    <!-- Beranda -->
+    <section id="home" class="active" data-aos="fade-up">
+      <div class="hero">
+        <img src="https://via.placeholder.com/140 " alt="Foto Profil" class="avatar">
+        <h2>Hai, Saya [Nama Kamu]</h2>
+        <p>Web Developer & Music Lover</p>
+      </div>
+    </section>
+
+    <!-- Project -->
+    <section id="project" data-aos="fade-up">
+      <h2 style="text-align:center; margin-bottom: 2rem;">Proyek Terbaru</h2>
+      <div class="slider">
+        <div class="slide">
+          <h3>Toko Online</h3>
+          <p>Teknologi: HTML, CSS, JS</p>
+        </div>
+        <div class="slide">
+          <h3>Portfolio V1</h3>
+          <p>Teknologi: HTML, CSS</p>
+        </div>
+        <div class="slide">
+          <h3>Blog Pribadi</h3>
+          <p>Teknologi: React, Firebase</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music -->
+    <section id="music" data-aos="zoom-in">
+      <div class="music-player">
+        <h2>Musik Favorit</h2>
+        <audio id="audioPlayer" controls>
+          <source src="assets/musics/fav.mp3" type="audio/mp3" />
+          Browser tidak mendukung audio.
+        </audio>
+        <p style="margin-top: 1rem;">Enjoy my favorite vibes 💿</p>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="contact" data-aos="fade-right">
+      <div class="contact-form">
+        <h2>Hubungi Saya</h2>
+        <form action="#" method="post">
+          <input type="text" placeholder="Nama Anda" required />
+          <input type="email" placeholder="Email Anda" required />
+          <textarea rows="5" placeholder="Pesan..."></textarea>
+          <button type="submit">Kirim</button>
+        </form>
       </div>
     </section>
   </main>
 
-  <!-- JS Utama -->
-  <script src="js/main.js"></script>
+  <footer>
+    <p>&copy; 2025 [Nama Kamu]. All Rights Reserved.</p>
+  </footer>
 
-  <!-- Halaman JS Dinamis -->
-  <script id="page-script" src="js/beranda.js"></script>
-  <script id="page-script" src="js/music.js"></script>
-  <script id="page-script" src="js/project.js"></script>
+  <!-- Sticky Music Player -->
+  <div class="music-sticky">
+    <audio id="stickyAudio" controls style="max-width: 400px;">
+      <source src="assets/musics/fav.mp3" type="audio/mp3" />
+      Browser tidak mendukung audio.
+    </audio>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
+  <script>
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    // Theme Toggle
+    const toggleBtn = document.getElementById("themeToggle");
+    const body = document.body;
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      body.classList.toggle("light");
+      toggleBtn.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+    });
+
+    // AOS Init
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
 </body>
 </html>
