@@ -1,50 +1,102 @@
+:root {
+  --primary-color: #00adb5;
+  --dark-bg: #222831;
+  --text-color: #eeeeee;
+  --accent-color: #393e46;
+  --hover-color: #007b83;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #f9f9f9;
-  color: #333;
+  background: var(--dark-bg);
+  color: var(--text-color);
+  transition: all 0.3s ease;
 }
 
 nav {
   display: flex;
   justify-content: center;
-  background: #222;
+  background: var(--accent-color);
   padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 nav a {
-  color: white;
-  margin: 0 1rem;
+  color: var(--text-color);
+  margin: 0 1.5rem;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
 nav a:hover {
-  color: #00adb5;
+  color: var(--primary-color);
 }
 
+/* INTRO STYLE */
 .intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 80px);
+  background: linear-gradient(135deg, #393e46, #222831);
   text-align: center;
-  padding: 6rem 2rem;
+  padding: 2rem;
+}
+
+.intro-content {
+  animation: fadeUp 1s ease-out;
+  max-width: 600px;
 }
 
 .intro h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.intro p {
+  font-size: 1.2rem;
   margin-bottom: 2rem;
+  color: #cccccc;
 }
 
 .intro button {
-  padding: 0.75rem 1.5rem;
-  background: #00adb5;
+  padding: 0.9rem 2rem;
+  background: var(--primary-color);
   border: none;
   color: white;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .intro button:hover {
-  background: #007b83;
+  background: var(--hover-color);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .intro h1 {
+    font-size: 2.5rem;
+  }
+
+  nav {
+    flex-wrap: wrap;
+  }
 }
