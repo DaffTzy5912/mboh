@@ -2,9 +2,16 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins :wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Utama -->
   <link rel="stylesheet" href="css/main.css" />
+
+  <!-- Halaman CSS Dinamis -->
   <link rel="stylesheet" id="page-style" href="css/beranda.css" />
   <link rel="stylesheet" id="page-style" href="css/music.css" />
   <link rel="stylesheet" id="page-style" href="css/project.css" />
@@ -12,23 +19,26 @@
 <body>
   <header>
     <nav id="nav">
-  <a href="#" data-page="beranda">Beranda</a>
-  <a href="#" data-page="project">Project</a>
-  <a href="#" data-page="music">Music Fav</a>
-</nav>
+      <a href="#" data-page="beranda">Beranda</a>
+      <a href="#" data-page="project">Project</a>
+      <a href="#" data-page="music">Music Fav</a>
+    </nav>
   </header>
 
   <main id="content">
-  <section class="intro">
-    <div class="intro-content">
-      <h1>My Portfolio</h1>
-      <p>Selamat datang di dunia saya, tempat semua project terbaik saya lahir.</p>
-      <button id="go-beranda">Tekan Saya</button>
-    </div>
-  </section>
-</main>
+    <section class="intro">
+      <div class="intro-content">
+        <h1>My Portfolio</h1>
+        <p>Selamat datang di dunia saya, tempat semua project terbaik saya lahir.</p>
+        <button id="go-beranda">Tekan Saya</button>
+      </div>
+    </section>
+  </main>
 
+  <!-- JS Utama -->
   <script src="js/main.js"></script>
+
+  <!-- Halaman JS Dinamis -->
   <script id="page-script" src="js/beranda.js"></script>
   <script id="page-script" src="js/music.js"></script>
   <script id="page-script" src="js/project.js"></script>
