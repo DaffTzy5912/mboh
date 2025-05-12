@@ -1,14 +1,16 @@
 :root {
-  --primary-color: #00adb5;
-  --dark-bg: #222831;
-  --text-color: #eeeeee;
-  --accent-color: #393e46;
-  --hover-color: #007b83;
+  --primary-color: #00f2ff;
+  --secondary-color: #5eead4;
+  --dark-bg: #0f172a;
+  --text-color: #e2e8f0;
+  --muted-color: #94a3b8;
+  --hover-color: #38bdf8;
+  --gradient: linear-gradient(90deg, #00f2ff, #5eead4);
 }
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', 'Poppins', sans-serif;
   background: var(--dark-bg);
   color: var(--text-color);
   transition: all 0.3s ease;
@@ -17,7 +19,7 @@ body {
 nav {
   display: flex;
   justify-content: center;
-  background: var(--accent-color);
+  background: #1e293b;
   padding: 1rem;
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
@@ -41,41 +43,52 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   height: calc(100vh - 80px);
-  background: linear-gradient(135deg, #393e46, #222831);
+  background: linear-gradient(135deg, #0f172a, #1e293b);
   text-align: center;
   padding: 2rem;
 }
 
 .intro-content {
   animation: fadeUp 1s ease-out;
-  max-width: 600px;
+  max-width: 700px;
+  padding: 2rem;
 }
 
 .intro h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
-  color: var(--primary-color);
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .intro p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  color: #cccccc;
+  color: var(--muted-color);
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .intro button {
   padding: 0.9rem 2rem;
   background: var(--primary-color);
   border: none;
-  color: white;
+  color: #0f172a;
   font-size: 1rem;
-  border-radius: 12px;
+  font-weight: bold;
+  border-radius: 14px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 242, 255, 0.3);
 }
 
 .intro button:hover {
   background: var(--hover-color);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
 }
 
 /* ANIMATIONS */
