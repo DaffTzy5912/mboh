@@ -52,3 +52,12 @@ function loadPage(page) {
 
   pageScript.replaceWith(newScript);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("go-beranda");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      loadPage("beranda");
+    });
+  }
+});
