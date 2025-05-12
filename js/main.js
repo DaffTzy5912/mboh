@@ -61,3 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.getElementById("nav");
+  const btn = document.getElementById("go-beranda");
+
+  // Sembunyikan nav di awal
+  if (nav) nav.style.display = "none";
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      if (nav) nav.style.display = "flex"; // Tampilkan kembali nav
+      loadPage("beranda");
+    });
+  }
+});
